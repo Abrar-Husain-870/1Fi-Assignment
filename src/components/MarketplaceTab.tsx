@@ -469,28 +469,36 @@ export default function MarketplaceTab({ searchQuery, onSelectProduct }: Marketp
         <div
           style={{
             position: 'fixed',
-            inset: 0,
-            zIndex: 100,
-            backgroundColor: 'rgba(0, 0, 0, 0.55)',
-            backdropFilter: 'blur(4px)',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            width: '100vw',
+            height: '100vh',
+            zIndex: 99999,
+            backgroundColor: 'rgba(0, 0, 0, 0.65)',
+            backdropFilter: 'blur(6px)',
+            WebkitBackdropFilter: 'blur(6px)',
             display: 'flex',
             alignItems: 'flex-end',
             justifyContent: 'center',
-            maxWidth: '480px',
-            margin: '0 auto',
           }}
           onClick={() => setModalProduct(null)}
         >
           <div
             style={{
               width: '100%',
+              maxWidth: '480px',
               backgroundColor: '#FFFFFF',
               borderTopLeftRadius: '24px',
               borderTopRightRadius: '24px',
               padding: '24px 20px',
               maxHeight: '85vh',
               overflowY: 'auto',
-              boxShadow: '0 -10px 40px rgba(0, 0, 0, 0.2)',
+              boxShadow: '0 -10px 40px rgba(0, 0, 0, 0.3)',
+              position: 'relative',
+              zIndex: 100000,
+              animation: 'slideUp 0.25s cubic-bezier(0.16, 1, 0.3, 1)',
             }}
             onClick={(e) => e.stopPropagation()}
           >

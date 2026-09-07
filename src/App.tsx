@@ -51,7 +51,6 @@ export default function App() {
           boxShadow: '0 0 40px rgba(0, 0, 0, 0.1)',
           display: 'flex',
           flexDirection: 'column',
-          overflowX: 'hidden',
         }}
       >
         {/* Status Bar simulation */}
