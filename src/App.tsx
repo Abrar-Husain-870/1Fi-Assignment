@@ -10,11 +10,14 @@ import HomeView from './views/HomeView';
 import EmiDuesView from './views/EmiDuesView';
 import LimitView from './views/LimitView';
 import ProfileView from './views/ProfileView';
+import ProductDetailModal from './components/ProductDetailModal';
+import type { MarketplaceProduct } from './data/marketplaceData';
 
 export default function App() {
   const [activeShopTab, setActiveShopTab] = useState<string>('top-brands');
   const [activeBottomNav, setActiveBottomNav] = useState<string>('shop');
   const [searchQuery, setSearchQuery] = useState<string>('');
+  const [selectedProduct, setSelectedProduct] = useState<MarketplaceProduct | null>(null);
 
   const getSearchPlaceholder = () => {
     switch (activeShopTab) {
@@ -102,7 +105,10 @@ export default function App() {
                 <NearbyStoresTab searchQuery={searchQuery} />
               )}
               {activeShopTab === 'marketplace' && (
-                <MarketplaceTab searchQuery={searchQuery} />
+                <MarketplaceTab
+                  searchQuery={searchQuery}
+                  onSelectProduct={setSelectedProduct}
+                />
               )}
             </>
           )}
@@ -114,6 +120,12 @@ export default function App() {
 
         {/* Bottom Navigation */}
         <BottomNav activeTab={activeBottomNav} onTabChange={setActiveBottomNav} />
+
+        {/* Product Detail Modal */}
+        <ProductDetailModal
+          product={selectedProduct}
+          onClose={() => setSelectedProduct(null)}
+        />
       </div>
     </div>
   );
